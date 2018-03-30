@@ -2,7 +2,7 @@
 
 namespace Fitlet\Model;
 
-class JsonResponse
+class JsonResponse implements \JsonSerializable
 {
     /**
      * @var int
@@ -19,14 +19,20 @@ class JsonResponse
      */
     private $details;
 
+    public static function newInstance()
+    {
+        return new self();
+    }
+
     public function getStatus(): int
     {
         return $this->status;
     }
 
-    public function setStatus(int $status): void
+    public function setStatus(int $status): JsonResponse
     {
         $this->status = $status;
+        return $this;
     }
 
     public function getMessage(): string
@@ -34,9 +40,10 @@ class JsonResponse
         return $this->message;
     }
 
-    public function setMessage(string $message): void
+    public function setMessage(string $message): JsonResponse
     {
         $this->message = $message;
+        return $this;
     }
 
     public function getDetails(): array
@@ -44,9 +51,10 @@ class JsonResponse
         return $this->details;
     }
 
-    public function setDetails(array $details): void
+    public function setDetails(array $details): JsonResponse
     {
         $this->details = $details;
+        return $this;
     }
 
     public function toArray(): array
@@ -56,5 +64,10 @@ class JsonResponse
             "message" => $this->getMessage(),
             "details" => $this->getDetails()
         ];
+    }
+
+    public function jsonSerialize()
+    {
+        return $this->toArray();
     }
 }
