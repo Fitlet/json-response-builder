@@ -19,7 +19,7 @@ class JsonResponseWrapper implements ResponseWrapper
         return new self();
     }
 
-    public function wrap(Response $res)
+    public function wrap(Response $res): Response
     {
         return $res->withJson($this->jsonResponse, $this->jsonResponse->getStatus());
     }
