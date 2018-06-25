@@ -1,6 +1,6 @@
 {
   "name": "fitlet/json-response-builder",
-  "description": "Standarized JSON Response builder extension for PHP Slim framework",
+  "description": "Standarized JSON Response builder extension for PHP Slim framework.",
   "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
